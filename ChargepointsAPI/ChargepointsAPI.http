@@ -1,0 +1,6 @@
+@ChargepointsAPI_HostAddress = http://localhost:5037
+
+GET {{ChargepointsAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
