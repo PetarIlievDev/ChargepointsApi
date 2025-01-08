@@ -43,10 +43,23 @@
                 return false;
             }
 
-            location.Name ??= model.Name; 
-            location.Address ??= model.Address; 
-            location.City ??= model.City; 
-            location.PostalCode ??= model.PostalCode; 
+            ////Using Reflection to update only the properties that are not null
+            //location.GetType().GetProperties().ToList().ForEach(prop =>
+            //{
+            //    if (prop.GetValue(location) == null)
+            //    {
+            //        var valueFromDb = model?.GetType()?.GetProperty(prop.Name)?.GetValue(model);
+            //        if (valueFromDb != null)
+            //        {
+            //            prop.SetValue(location, valueFromDb);
+            //        }
+            //    }
+            //});
+
+            location.Name ??= model.Name;
+            location.Address ??= model.Address;
+            location.City ??= model.City;
+            location.PostalCode ??= model.PostalCode;
             location.Country ??= model.Country;
             if (saveLocation.Type == null) location.Type = (TypeEnum)model?.Type;
             if (location.LastUpdated == DateTime.MinValue) location.LastUpdated = model.LastUpdated;
